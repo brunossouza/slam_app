@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:slam/providers/theme_provider.dart';
 import '../widgets/custom_drawer.dart';
 
-class ConfigurationScreen extends StatelessWidget {
+class ConfigurationScreen extends StatefulWidget {
   static const String routeName = '/configuration';
 
+  @override
+  _ConfigurationScreenState createState() => _ConfigurationScreenState();
+}
+
+class _ConfigurationScreenState extends State<ConfigurationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +46,30 @@ class ConfigurationScreen extends StatelessWidget {
                     TextField(
                       decoration: InputDecoration(labelText: 'opcional - 8080'),
                     ),
+                    Consumer<ThemeProvider>(builder: (cxt, snap, ch) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Tema do Aplicativo: ${snap.isDark ? 'Dark' : 'Light'}',
+                            style: Theme.of(context).textTheme.title,
+                          ),
+                          Switch.adaptive(
+                            activeColor: Theme.of(context).accentColor,
+                            value: snap.isDark,
+                            onChanged: (val) {
+                              setState(() {
+                                if (snap.isDark) {
+                                  snap.light();
+                                } else {
+                                  snap.dark();
+                                }
+                              });
+                            },
+                          )
+                        ],
+                      );
+                    }),
                   ],
                 ),
               ),

@@ -7,6 +7,7 @@ import './screens/devices_list_screen.dart';
 import './screens/configuration_screen.dart';
 import './screens/charts_screen.dart';
 import './screens/device_configuration_screen.dart';
+import './providers/theme_provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,19 +18,26 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: DevicesProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: ThemeProvider(),
         )
       ],
-      child: MaterialApp(
-        title: 'SLAM',
-        theme: ThemeData.dark(),
-        home: DevicesListScreen(),
-        routes: {
-          DevicesListScreen.routeName: (cxt) => DevicesListScreen(),
-          ChartScreen.routeName: (cxt) => ChartScreen(),
-          DeviceConfigurationScreen.routeName: (cxt) =>
-              DeviceConfigurationScreen(),
-          ConfigurationScreen.routeName: (cxt) => ConfigurationScreen(),
-          AboutScreen.routeName: (cxt) => AboutScreen(),
+      child: Consumer<ThemeProvider>(
+        builder: (cxt, snapshot, child) {
+          return MaterialApp(
+            title: 'SLAM',
+            theme: snapshot.theme,
+            home: DevicesListScreen(),
+            routes: {
+              DevicesListScreen.routeName: (cxt) => DevicesListScreen(),
+              ChartScreen.routeName: (cxt) => ChartScreen(),
+              DeviceConfigurationScreen.routeName: (cxt) =>
+                  DeviceConfigurationScreen(),
+              ConfigurationScreen.routeName: (cxt) => ConfigurationScreen(),
+              AboutScreen.routeName: (cxt) => AboutScreen(),
+            },
+          );
         },
       ),
     );
