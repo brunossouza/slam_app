@@ -184,8 +184,19 @@ class DevicesProvider extends ChangeNotifier {
       uptime: "31/12/1969 22:03:33",
     ),
   ];
+  String _statusFilter;
 
   List<Device> get items {
+    if (_statusFilter != null &&
+        _statusFilter.isNotEmpty &&
+        _statusFilter != 'TODOS') {
+      return _items.where((item) => item.status == _statusFilter).toList();
+    }
     return [..._items];
+  }
+
+  void filterByStatus(String status) {
+    _statusFilter = status;
+    notifyListeners();
   }
 }

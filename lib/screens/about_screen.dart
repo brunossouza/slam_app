@@ -22,26 +22,26 @@ class AboutScreen extends StatelessWidget {
                   'Dispositivo Registrador de Energia e Acionador de Equipamentos Residenciais via Wireless, Internet das Coisas',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5,
-                    wordSpacing: 4,
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
+                Divider(),
                 Text(
                   'Esse projeto terá como finalidade controlar cargas On/Off via aplicativo, wireless e servidor, medir e registrar consumo de energia, fator de potência e, se possível, distorção harmônica. Além disso, terá inteligência artificial e aprendizado de máquina para assimilar os hábitos de utilização, otimizar o consumo de energia e proporcionar comodidade aos usuários, sugerindo um melhor perfil do Setup para o uso consciente e sustentável de energia. Mais aplicável em residências que geram sua própria energia para melhor gerenciamento da mesma.',
+                  textAlign: TextAlign.left,
                   style: TextStyle(
-                    fontSize: 25,
-                    letterSpacing: 1.5,
-                    wordSpacing: 4,
+                    fontSize: 20,
+                    wordSpacing: 3,
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
+                Divider(),
                 Container(
                   width: double.infinity,
                   child: Text(
@@ -49,8 +49,8 @@ class AboutScreen extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 20,
-                      letterSpacing: 1.5,
-                      wordSpacing: 4,
+                      letterSpacing: 2,
+                      wordSpacing: 5,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -61,22 +61,23 @@ class AboutScreen extends StatelessWidget {
                     'Bruno Silva de Souza; \nPedro Leonardo Silva da Cruz; \nRenato Damato Machado;',
                     style: TextStyle(
                       fontSize: 20,
-                      letterSpacing: 1.5,
-                      wordSpacing: 4,
+                      letterSpacing: 2,
+                      wordSpacing: 6,
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
+                Divider(),
                 Container(
                   width: double.infinity,
                   child: Text(
                     'Docente:',
                     style: TextStyle(
                         fontSize: 20,
-                        letterSpacing: 1.5,
-                        wordSpacing: 4,
+                        letterSpacing: 2,
+                        wordSpacing: 5,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -86,8 +87,8 @@ class AboutScreen extends StatelessWidget {
                     'Diego Silva Menozzi',
                     style: TextStyle(
                       fontSize: 20,
-                      letterSpacing: 1.5,
-                      wordSpacing: 4,
+                      letterSpacing: 2,
+                      wordSpacing: 6,
                     ),
                   ),
                 ),
@@ -97,9 +98,9 @@ class AboutScreen extends StatelessWidget {
                 Text(
                   'Vassouras / 2019',
                   style: TextStyle(
-                    fontSize: 20,
-                    letterSpacing: 1.5,
-                    wordSpacing: 4,
+                    fontSize: 18,
+                    letterSpacing: 1,
+                    wordSpacing: 6,
                   ),
                 ),
                 SizedBox(
