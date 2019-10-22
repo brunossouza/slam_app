@@ -7,6 +7,7 @@ import '../widgets/device_item.dart';
 import '../widgets/custom_drawer.dart';
 
 class DevicesListScreen extends StatefulWidget {
+  static const String routeName = '/devices-list';
   @override
   _DevicesListScreenState createState() => _DevicesListScreenState();
 }

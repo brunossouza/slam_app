@@ -19,6 +19,8 @@ class DeviceItem extends StatelessWidget {
     if (device.status == "OFFLINE") {
       return Colors.red;
     }
+
+    return null;
   }
 
   Icon _showIconStatus() {
@@ -47,6 +49,8 @@ class DeviceItem extends StatelessWidget {
         color: Colors.white,
       );
     }
+
+    return null;
   }
 
   @override

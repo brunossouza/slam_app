@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:slam/providers/devices_provider.dart';
+
+import './providers/devices_provider.dart';
+import './screens/about_screen.dart';
 import './screens/devices_list_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -21,6 +22,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: DevicesListScreen(),
+        routes: {
+          DevicesListScreen.routeName: (cxt) => DevicesListScreen(),
+          AboutScreen.routeName: (cxt) => AboutScreen(),
+        },
       ),
     );
   }

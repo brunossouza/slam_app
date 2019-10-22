@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../screens/devices_list_screen.dart';
+import '../screens/about_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -13,7 +15,10 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.developer_board),
             title: Text('Dispositivos'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(DevicesListScreen.routeName);
+            },
           ),
           Divider(),
           ListTile(
@@ -31,7 +36,9 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.help),
             title: Text('Sobre'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(AboutScreen.routeName);
+            },
           ),
         ],
       ),
