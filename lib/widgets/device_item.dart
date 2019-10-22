@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/devices.dart';
+import '../screens/device_configuration_screen.dart';
 
 class DeviceItem extends StatelessWidget {
   final Device device;
@@ -66,7 +67,10 @@ class DeviceItem extends StatelessWidget {
         subtitle: Text('${device.status} - ${device.uptime}'),
         trailing: IconButton(
           icon: Icon(Icons.settings),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context)
+                .pushNamed(DeviceConfigurationScreen.routeName);
+          },
         ),
       ),
     );

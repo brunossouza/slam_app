@@ -6,6 +6,7 @@ import './screens/about_screen.dart';
 import './screens/devices_list_screen.dart';
 import './screens/configuration_screen.dart';
 import './screens/charts_screen.dart';
+import './screens/device_configuration_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
         routes: {
           DevicesListScreen.routeName: (cxt) => DevicesListScreen(),
           ChartScreen.routeName: (cxt) => ChartScreen(),
+          DeviceConfigurationScreen.routeName: (cxt) =>
+              DeviceConfigurationScreen(),
           ConfigurationScreen.routeName: (cxt) => ConfigurationScreen(),
           AboutScreen.routeName: (cxt) => AboutScreen(),
         },
