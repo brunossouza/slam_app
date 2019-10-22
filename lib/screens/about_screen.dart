@@ -95,6 +95,7 @@ class AboutScreen extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
+                Divider(),
                 Text(
                   'Vassouras / 2019',
                   style: TextStyle(
@@ -102,9 +103,6 @@ class AboutScreen extends StatelessWidget {
                     letterSpacing: 1,
                     wordSpacing: 6,
                   ),
-                ),
-                SizedBox(
-                  height: 25,
                 ),
               ],
             ),
