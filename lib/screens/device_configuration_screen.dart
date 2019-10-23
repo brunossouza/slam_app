@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class DeviceConfigurationScreen extends StatefulWidget {
   static const String routeName = '/device-config';
+
   @override
   _DeviceConfigurationScreenState createState() =>
       _DeviceConfigurationScreenState();
@@ -58,6 +59,9 @@ class _DeviceConfigurationScreenState extends State<DeviceConfigurationScreen> {
                       decoration:
                           const InputDecoration(labelText: 'Equipamento:'),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -75,6 +79,9 @@ class _DeviceConfigurationScreenState extends State<DeviceConfigurationScreen> {
                           },
                         )
                       ],
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                   ],
                 ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/devices.dart';
 
 import '../providers/devices_provider.dart';
 import '../widgets/device_item.dart';
@@ -15,37 +14,24 @@ class DevicesListScreen extends StatefulWidget {
 }
 
 class _DevicesListScreenState extends State<DevicesListScreen> {
-  var _isLoading = true;
-  var _isInit = true;
-
-  @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-
-      Provider.of<DevicesProvider>(context, listen: false)
-          .fetchAndSetDevices()
-          .then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-    }
-    _isInit = false;
-    super.didChangeDependencies();
+  Future<void> _refreshProducts(BuildContext context) async {
+    await Provider.of<DevicesProvider>(context, listen: false)
+        .fetchAndSetDevices();
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Device> _devicesList = Provider.of<DevicesProvider>(context).items;
-
     return Scaffold(
       // backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: Text('Lista de Dispositivos'),
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {
+              _refreshProducts(context);
+            },
+          ),
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
               if (selectedValue == FilterOptions.ALL) {
@@ -100,33 +86,47 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
         ],
       ),
       drawer: CustomDrawer(),
-      body: Consumer<DevicesProvider>(
-        builder: (cxt, snapshot, child) => Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: _isLoading
-              ? Center(
-                  child: Column(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: FutureBuilder(
+          key: UniqueKey(),
+          future: _refreshProducts(context),
+          builder: (cxt, snapshot) {
+            return snapshot.connectionState == ConnectionState.waiting
+                ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       CircularProgressIndicator(),
                       SizedBox(
-                        height: 25,
+                        height: 15,
                       ),
                       Text(
                         'carregando...',
-                        style: TextStyle(fontSize: 25),
-                      )
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ],
-                  ),
-                )
-              : ListView.builder(
-                  key: UniqueKey(),
-                  itemCount: _devicesList.length,
-                  itemBuilder: (cxt, index) {
-                    return DeviceItem(_devicesList[index]);
-                  },
-                ),
+                  )
+                : /*TODO: resolver problema do RefreshIndicator*/
+                Consumer<DevicesProvider>(
+                    builder: (cxt, devicesProvider, _) => devicesProvider
+                                .items.length ==
+                            0
+                        ? Center(
+                            child: Text(
+                              'Sem dispositivos cadastrados!!!',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        : ListView.builder(
+                            key: UniqueKey(),
+                            itemCount: devicesProvider.items.length,
+                            itemBuilder: (cxt, index) {
+                              return DeviceItem(devicesProvider.items[index]);
+                            },
+                          ),
+                  );
+          },
         ),
       ),
     );

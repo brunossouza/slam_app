@@ -64,7 +64,7 @@ class DeviceItem extends StatelessWidget {
           child: _showIconStatus(),
         ),
         title: Text('${device.local} - ${device.device}'),
-        subtitle: Text('${device.status} - ${device.uptime}'),
+        subtitle: Text('${device.status} - ${device.uptime} dias'),
         trailing: IconButton(
           icon: Icon(Icons.settings),
           onPressed: () {

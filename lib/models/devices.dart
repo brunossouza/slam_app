@@ -5,7 +5,6 @@ class Device {
   final String token;
   final String status;
   final DateTime registryDate;
-  final String uptime;
 
   Device({
     this.id,
@@ -14,6 +13,9 @@ class Device {
     this.token,
     this.status,
     this.registryDate,
-    this.uptime,
   });
+
+  String get uptime {
+    return DateTime.now().difference(registryDate).inDays.toString();
+  }
 }

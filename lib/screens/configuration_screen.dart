@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:slam/providers/devices_provider.dart';
 import 'package:slam/providers/theme_provider.dart';
 import '../widgets/custom_drawer.dart';
 
@@ -46,6 +47,10 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                     TextField(
                       decoration: InputDecoration(labelText: 'opcional - 8080'),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
                     Consumer<ThemeProvider>(builder: (cxt, snap, ch) {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,6 +69,30 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                                 } else {
                                   snap.dark();
                                 }
+                              });
+                            },
+                          )
+                        ],
+                      );
+                    }),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    Consumer<DevicesProvider>(builder: (cxt, snap, ch) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Carregar dados de exemplo: ${snap.isLoadSampleData}',
+                            style: Theme.of(context).textTheme.title,
+                          ),
+                          Switch.adaptive(
+                            activeColor: Theme.of(context).accentColor,
+                            value: snap.isLoadSampleData,
+                            onChanged: (val) {
+                              setState(() {
+                                snap.loadSampleData(!snap.isLoadSampleData);
                               });
                             },
                           )
