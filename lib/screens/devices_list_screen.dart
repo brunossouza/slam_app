@@ -15,6 +15,28 @@ class DevicesListScreen extends StatefulWidget {
 }
 
 class _DevicesListScreenState extends State<DevicesListScreen> {
+  var _isLoading = true;
+  var _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Provider.of<DevicesProvider>(context, listen: false)
+          .fetchAndSetDevices()
+          .then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Device> _devicesList = Provider.of<DevicesProvider>(context).items;
@@ -82,13 +104,29 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
         builder: (cxt, snapshot, child) => Container(
           width: double.infinity,
           height: double.infinity,
-          child: ListView.builder(
-            key: UniqueKey(),
-            itemCount: _devicesList.length,
-            itemBuilder: (cxt, index) {
-              return DeviceItem(_devicesList[index]);
-            },
-          ),
+          child: _isLoading
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CircularProgressIndicator(),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Text(
+                        'carregando...',
+                        style: TextStyle(fontSize: 25),
+                      )
+                    ],
+                  ),
+                )
+              : ListView.builder(
+                  key: UniqueKey(),
+                  itemCount: _devicesList.length,
+                  itemBuilder: (cxt, index) {
+                    return DeviceItem(_devicesList[index]);
+                  },
+                ),
         ),
       ),
     );
