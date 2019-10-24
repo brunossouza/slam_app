@@ -104,14 +104,14 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
               ),
             ),
           ),
-          RaisedButton.icon(
-            icon: Icon(Icons.save),
-            label: Text('Salvar'),
-            color: Theme.of(context).errorColor,
-            elevation: 0,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            onPressed: () {},
-          ),
+          // RaisedButton.icon(
+          //   icon: Icon(Icons.save),
+          //   label: Text('Salvar'),
+          //   color: Theme.of(context).errorColor,
+          //   elevation: 0,
+          //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          //   onPressed: () {},
+          // ),
         ],
       ),
     );

@@ -22,9 +22,8 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Lista de Dispositivos'),
+        title: Text('Dispositivos'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
@@ -107,8 +106,7 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
                       ),
                     ],
                   )
-                : /*TODO: resolver problema do RefreshIndicator*/
-                Consumer<DevicesProvider>(
+                : Consumer<DevicesProvider>(
                     builder: (cxt, devicesProvider, _) => devicesProvider
                                 .items.length ==
                             0
