@@ -207,7 +207,6 @@ class DevicesProvider extends ChangeNotifier {
       notifyListeners();
     } catch (error) {
       // TODO: tratamento de erros
-
     }
   }
 

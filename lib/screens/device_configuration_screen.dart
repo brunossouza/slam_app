@@ -32,7 +32,6 @@ class _DeviceConfigurationScreenState extends State<DeviceConfigurationScreen> {
           // ),
           IconButton(
             icon: Icon(Icons.delete_forever),
-            color: Theme.of(context).errorColor,
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -94,7 +93,9 @@ class _DeviceConfigurationScreenState extends State<DeviceConfigurationScreen> {
             color: Theme.of(context).errorColor,
             elevation: 0,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
           ),
         ],
       ),
