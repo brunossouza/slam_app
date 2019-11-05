@@ -23,19 +23,22 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: CustomDrawer(),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'HOME',
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.w500,
+      body: GridView.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        childAspectRatio: 2 / 2,
+        children: List.generate(
+          100,
+          (val) {
+            return GridTile(
+              child: Container(
+                child: Text(val.toString()),
+                color: Colors.amber,
               ),
-            ),
-          ),
-        ],
+            );
+          },
+        ),
       ),
     );
   }
