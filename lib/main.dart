@@ -8,6 +8,7 @@ import './screens/configuration_screen.dart';
 import './screens/charts_screen.dart';
 import './screens/device_configuration_screen.dart';
 import './providers/theme_provider.dart';
+import './screens/home_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,8 +29,9 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'SLAM',
             theme: snapshot.theme,
-            home: DevicesListScreen(),
+            home: HomeScreen(),
             routes: {
+              HomeScreen.routeName: (cxt) => HomeScreen(),
               DevicesListScreen.routeName: (cxt) => DevicesListScreen(),
               ChartScreen.routeName: (cxt) => ChartScreen(),
               DeviceConfigurationScreen.routeName: (cxt) =>

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/home_screen.dart';
 import '../screens/charts_screen.dart';
 import '../screens/devices_list_screen.dart';
 import '../screens/configuration_screen.dart';
@@ -13,6 +14,14 @@ class CustomDrawer extends StatelessWidget {
         children: <Widget>[
           AppBar(
             title: Text('Slam'),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+            },
           ),
           Divider(),
           ListTile(
