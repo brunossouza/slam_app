@@ -179,7 +179,7 @@ class DevicesProvider extends ChangeNotifier {
       return;
     }
 
-    final url = 'https://slam-web.herokuapp.com/api/v1/devices';
+    final url = 'https://slam-gui.herokuapp.com/api/v1/devices';
     final List<Device> devicesLoaded = [];
 
     try {
